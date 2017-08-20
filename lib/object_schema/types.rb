@@ -1,0 +1,7 @@
+require_relative 'types/array'
+require_relative 'types/boolean'
+require_relative 'types/class'
+require_relative 'types/datetime'
+require_relative 'types/hash'
+require_relative 'types/nil'
+require_relative 'types/numeric'
