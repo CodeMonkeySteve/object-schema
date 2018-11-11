@@ -30,7 +30,7 @@ module ObjectSchema
 
   public
 
-    Types = %i{string number integer boolean object array null any}.freeze
+    Types = %i{string number integer boolean object array function null any}.freeze
     def self.type(type = nil)
       if type
         type = type.to_sym

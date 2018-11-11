@@ -6,7 +6,7 @@ describe Class::Schema do
 
   it "#func" do
     schema.func(:stuff)
-    expect(schema.functions[:stuff]).to be_a(Proc::Schema)
+    expect(schema.functions[:stuff]).to be_a(Function::Schema)
   end
 
   it "#get" do
@@ -25,7 +25,7 @@ describe Class::Schema do
     schema = Class::Schema.new { func :foo }
     expect(schema.as_json.deep_symbolize_keys).to eq(
       type: 'object',
-      functions: { foo: {} }
+      functions: { foo: { type: 'function' } }
     )
   end
 end

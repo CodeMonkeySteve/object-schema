@@ -1,5 +1,5 @@
 require_relative 'hash'
-require_relative 'proc'
+require_relative 'function'
 
 class Class::Schema < Hash::Schema
   build_methods :property, :function, :func
@@ -12,9 +12,8 @@ class Class::Schema < Hash::Schema
   end
 
   def function(name = nil, &defn)
-    proc = ::Proc::Schema.new(&defn)
-    proc.name ||= name
-    @functions[(name || proc.name).to_sym] = proc
+    func = Function::Schema.new(&defn)
+    @functions[(name || func.name).to_sym] = func
   end
   alias :func :function
 

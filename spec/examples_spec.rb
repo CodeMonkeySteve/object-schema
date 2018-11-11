@@ -69,7 +69,7 @@ describe "example schemas" do
       expect(props[:birthday]).to eq( type: 'string', format: 'date' )
 
       expect(person[:functions]).to eq(
-        age: { returns: { type: 'integer' } }
+        age: { type: 'function', returns: { type: 'integer' } }
       )
     end
 
