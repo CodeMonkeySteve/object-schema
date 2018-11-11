@@ -15,9 +15,8 @@ class Hash::Schema < ObjectSchema::Schema
   def property(name = nil, schema = nil, &defn)
     name, schema = normalize_opts(name, schema)
     prop = ObjectSchema::Property.new(parent: self, schema: schema, &defn)
-    name ||= prop.name
-    raise "Property #{prop.inspect} cannot be annonymous"  if name.nil? || name.empty?
-    @properties[name.to_sym] = prop
+    raise "Property #{prop.inspect} cannot be annonymous"  if name.blank?
+    @properties[(name || prop.name).to_sym] = prop
   end
 
   schema_reader :extra

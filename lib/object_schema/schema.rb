@@ -54,7 +54,7 @@ module ObjectSchema
     def as_json(**opts)
       {
         type: self.class.type.to_s,
-        title: name,
+        name: name,
         description: description
       }.reject { |_, v|  v.blank? }.as_json(**opts)
     end

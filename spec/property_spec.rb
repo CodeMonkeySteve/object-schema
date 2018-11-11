@@ -68,7 +68,7 @@ describe ObjectSchema::Property do
     end
     expect(schema.as_json.symbolize_keys).to match(
       type: 'string',
-      title: 'foo',
+      name: 'foo',
       identity: true,
       readonly: true,
       requires: %w(other),
