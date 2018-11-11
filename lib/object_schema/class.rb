@@ -5,7 +5,7 @@ module ObjectSchema
       base.extend ClassMethods
     end
 
-    def schema
+    def _schema
       self.class.schema
     end
 

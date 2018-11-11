@@ -11,6 +11,6 @@ describe ObjectSchema::Class do
 
   it "#schema" do
     obj = subject.new
-    expect(obj.schema).to eq obj.class.schema
+    expect(obj._schema).to eq obj.class.schema
   end
 end

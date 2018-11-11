@@ -2,18 +2,14 @@ require 'active_support/dependencies/autoload'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/object/json'
 require 'active_support/json/encoding'
-require 'active_support/callbacks'
 
 module ObjectSchema
+  extend ActiveSupport::Autoload
+  autoload :Object
+  autoload :Param
+  autoload :Property
+
   class Schema
-    extend ActiveSupport::Autoload
-    include ActiveSupport::Callbacks
-    define_callbacks :defined
-
-    autoload :Boolean
-    autoload :Object
-    autoload :Property
-
   protected
 
     def self.schema_reader(*attrs)
@@ -41,7 +37,7 @@ module ObjectSchema
     end
 
     def initialize(&defn)
-      run_callbacks(:defined) { instance_eval(&defn) }  if defn
+      self.instance_eval(&defn)  if defn
     end
 
     schema_reader :name
@@ -89,6 +85,7 @@ module ObjectSchema
     end
 
   protected
+
     def normalize_opts(name_or_schema, schema)
       name = if schema
         name_or_schema
@@ -98,7 +95,6 @@ module ObjectSchema
        schema = name_or_schema
        nil
       end
-
       [ name, schema ]
     end
   end

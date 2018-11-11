@@ -1,5 +1,4 @@
 require 'object_schema/buildable'
-require 'active_support/callbacks'
 
 # Hash/Class Property
 class ObjectSchema::Property

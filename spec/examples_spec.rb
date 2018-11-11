@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'active_support/core_ext/hash/keys'
-
-require __dir__+'/../examples/person'
+require_relative '../examples/person'
 
 describe "example schemas" do
   describe Address do
