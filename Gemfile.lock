@@ -37,6 +37,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   object-schema!
@@ -44,4 +45,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.17.1
+   2.2.2

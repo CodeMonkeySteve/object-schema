@@ -1,12 +1,14 @@
 require 'object_schema/buildable'
 
-# Hash/Class Property
+# Function Parameter
 class ObjectSchema::Param
   include ObjectSchema::Buildable
+  attr_reader :option
 
-  def initialize(parent: nil, schema: nil, &defn)
+  def initialize(parent: nil, schema: nil, option: false, &defn)
     @required = false
-    super
+    @option = false
+    super(parent: parent, schema: schema, &defn)
   end
 
   def required?
@@ -44,10 +46,8 @@ class ObjectSchema::Param
   alias_method :default=, :default
 
   def as_json(**opts)
-    super.update(
-      identity: identity?,
-      default:  default&.as_json,
-      enum:     values&.map(&:as_json),
+    schema.as_json(**opts).update(
+      option:   option || nil,
     ).reject { |_, v|  v.blank? }.as_json(**opts)
   end
 end

@@ -4,11 +4,12 @@ module Schema::Accessors
   extend ActiveSupport::Concern
 
   included do
-    raise "Schema #{schema.inspect} has no properties"  unles props = self.schema.properties
+    props = self.schema.properties
+    raise "Schema #{schema.inspect} has no properties"  unless props
     generated_methods.module_eval do
-
-    props.each do |name, prop|
-      define_method prop, ""
+      props.each do |name, prop|
+        define_method prop, ""
+      end
     end
   end
 
